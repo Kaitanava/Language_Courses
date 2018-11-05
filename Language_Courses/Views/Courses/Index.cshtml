@@ -1,0 +1,86 @@
+﻿@model Language_Courses.ViewModels.CoursesViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseViewModel.CourseID)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.CourseViewModel.NameOfCourse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseViewModel.TrainingProgram)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseViewModel.DescriptionOfCourses)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseViewModel.IntensityOfTraining)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseViewModel.NumberOfPlaces)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseViewModel.Hourse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseViewModel.Cost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseViewModel.Surname)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Courses)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameOfCourse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrainingProgram)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescriptionOfCourses)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IntensityOfTraining)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfPlaces)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hourse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Surname)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CourseID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CourseID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CourseID">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

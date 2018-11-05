@@ -1,0 +1,48 @@
+﻿@model Language_Courses.ViewModels.GroupsViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupViewModel.GroupId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupViewModel.NameOfCourse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupViewModel.SurnameListener)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Groups) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.NameOfCourse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listener.Surname)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.GroupId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.GroupId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.GroupId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
